@@ -1,10 +1,13 @@
-package com.example.restservice;
+package com.example.restservice.service;
+
+import org.springframework.stereotype.Service;
 
 /**
  * This class calculates the 10% discount of user who is an
  * affiliate to the store.
  */
-public class Affiliate extends User {
+@Service
+public class AffiliateDiscount extends CustomerDiscount {
 
     /**
      * This method calculates the 10% discount on a given bill
@@ -14,7 +17,7 @@ public class Affiliate extends User {
      */
     @Override
     public double getDiscount(double bill){
-        discount = bill * 0.1;
+        discount = bill * (discountRates.getAffiliateDiscount()/100);
         return discount;
     }
 }

@@ -20,7 +20,6 @@ public class RestServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(RestServiceApplication.class, args);
 	}
-
 	@Bean
 	public Docket swaggerConfiguration(){
 
@@ -34,11 +33,11 @@ public class RestServiceApplication {
 
 	private ApiInfo appDetails(){
 		return new ApiInfo(
-				"User API",
+				"Discount Service  API",
 				"A Net Payable User API for Retail Store",
 				"1.0",
 				"Free to use",
-				new springfox.documentation.service.Contact("Thamang Madile","http://teddymadile.com", "tmadile@gmail.com"),
+				new springfox.documentation.service.Contact("Teddy Madile","http://teddymadile.com", "tmadile@gmail.com"),
 				"API License",
 				"http://teddymadile.com",
 				Collections.emptyList()

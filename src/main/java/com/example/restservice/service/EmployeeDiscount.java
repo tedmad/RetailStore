@@ -1,11 +1,14 @@
-package com.example.restservice;
+package com.example.restservice.service;
+
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  * This class calculates the 30% discount on a given bill of a user who is an
  * employee to the store.
  */
-public class Employee extends User {
-
+@Service
+public class EmployeeDiscount extends CustomerDiscount {
     /**
      * This method calculates the 30% discount on a given bill
      * and returns the discount.
@@ -14,7 +17,7 @@ public class Employee extends User {
      */
     @Override
     public double getDiscount(double bill){
-        discount = bill * 0.3;
+        discount = bill * (discountRates.getEmployeeDiscount()/100);
         return discount;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.restservice;
+package com.example.restservice.model;
 
 /**
  * This a model class for the invoice.
@@ -59,4 +59,5 @@ public class Invoice {
     public double getNetPayable() {
         return netPayable;
     }
+
 }

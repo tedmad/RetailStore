@@ -1,10 +1,13 @@
-package com.example.restservice;
+package com.example.restservice.service;
+
+import org.springframework.stereotype.Service;
 
 /**
  * This class calculates the 5% discount of user who has
  *  been a customer for over two (2) years
  */
-public class LongTimeCustomer extends User {
+@Service
+public class LongTimeCustomerDiscount extends CustomerDiscount {
     /**
      * This method calculates the 5% discount on a given bill
      * and returns the discount.
@@ -13,7 +16,7 @@ public class LongTimeCustomer extends User {
      */
     @Override
     public double getDiscount(double bill){
-        discount = bill * 0.05;
+        discount = bill * (discountRates.getLongCustomerDiscount()/100.0);
         return discount;
     }
 }

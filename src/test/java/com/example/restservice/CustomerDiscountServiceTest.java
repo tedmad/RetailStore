@@ -1,10 +1,11 @@
 package com.example.restservice;
 
+import com.example.restservice.service.DiscountService;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class UserServiceTest {
+class CustomerDiscountServiceTest {
 
     @Test
     void getTotalDiscount() {

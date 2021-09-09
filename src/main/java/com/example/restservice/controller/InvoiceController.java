@@ -1,5 +1,8 @@
-package com.example.restservice;
+package com.example.restservice.controller;
 
+import com.example.restservice.model.Invoice;
+import com.example.restservice.service.DiscountService;
+import com.example.restservice.utility.Rates;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -24,6 +27,8 @@ public class InvoiceController {
     private final AtomicLong id_counter = new AtomicLong();
     @Autowired
     private DiscountService discountService;
+    @Autowired
+    private Rates discountRates;
 
 
 
@@ -44,6 +49,13 @@ public class InvoiceController {
     public Invoice invoice(@PathParam("bill") double bill, @PathParam("billType") int billType, @PathParam("user") int user){
         double discount = discountService.getTotalDiscount(bill, billType, user);
         return new Invoice(id_counter.incrementAndGet(), bill, discount, bill - discount);
+    }
+
+
+    @GetMapping("/discounts")
+    public String discounts(@PathParam("employeeDiscount")double employeeDiscount, @PathParam("affiliateDiscount")double affiliateDiscount,
+                            @PathParam("longCustomerDiscount") double longCustomerDiscount, @PathParam("billDiscount")double billDiscount){
+        return  discountRates.setRates(employeeDiscount,affiliateDiscount,longCustomerDiscount,billDiscount);
     }
 
 }
